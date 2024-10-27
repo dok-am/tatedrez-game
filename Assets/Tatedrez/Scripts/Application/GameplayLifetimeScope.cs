@@ -1,3 +1,5 @@
+using Tatedrez.Services.BoardService;
+using Tatedrez.Services.BoardService.Interface;
 using Tatedrez.Services.Configs;
 using Tatedrez.Services.Configs.Interfaces;
 using Tatedrez.Services.GameFlow;
@@ -20,6 +22,7 @@ namespace Tatedrez.Application
 
             builder.Register<IConfigsService, ConfigsService>(Lifetime.Singleton);
 
+            builder.Register<IBoardService, BoardService>(Lifetime.Scoped);
             builder.Register<IPlayerDataService, PlayerDataService>(Lifetime.Scoped);
             builder.Register<IGameFlowService, GameFlowService>(Lifetime.Scoped);
 

@@ -9,5 +9,6 @@ namespace Tatedrez.Data.Interfaces
         public IReadOnlyList<IPiece> PiecesOnBoard { get; }
 
         public void PutPieceOnBoard(Piece piece);
+        public void ResetState();
     }
 }

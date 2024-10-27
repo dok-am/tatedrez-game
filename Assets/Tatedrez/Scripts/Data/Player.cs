@@ -9,7 +9,6 @@ namespace Tatedrez.Data
         public IReadOnlyList<IPiece> FreePieces => _freePieces;
         public IReadOnlyList<IPiece> PiecesOnBoard => _piecesOnBoard;
 
-
         private List<Piece> _freePieces = new((int)PieceType.TypesCount);
         private List<Piece> _piecesOnBoard = new((int)PieceType.TypesCount);
 
@@ -17,12 +16,7 @@ namespace Tatedrez.Data
         {
             Color = color;
 
-            int piecesCount = (int)PieceType.TypesCount;
-            for(int i = 0; i < piecesCount; i++)
-            {
-                PieceType pieceType = (PieceType)i;
-                _freePieces.Add(new Piece(pieceType));
-            }
+            ResetState();
         }
 
         public void PutPieceOnBoard(Piece piece)
@@ -32,6 +26,19 @@ namespace Tatedrez.Data
 
             _freePieces.Remove(piece);
             _piecesOnBoard.Add(piece);
+        }
+
+        public void ResetState()
+        {
+            _freePieces.Clear();
+            _piecesOnBoard.Clear();
+
+            int piecesCount = (int)PieceType.TypesCount;
+            for (int i = 0; i < piecesCount; i++)
+            {
+                PieceType pieceType = (PieceType)i;
+                _freePieces.Add(new Piece(pieceType));
+            }
         }
     }
 }
