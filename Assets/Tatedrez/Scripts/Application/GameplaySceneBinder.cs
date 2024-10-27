@@ -1,4 +1,6 @@
 ﻿using Tatedrez.Configs;
+using Tatedrez.UI;
+using Tatedrez.UI.Interfaces;
 using Tatedrez.View.BoardView;
 using UnityEngine;
 
@@ -10,7 +12,8 @@ namespace Tatedrez.Application
         public GameConfig GameConfig => _gameConfig;
         public BoardCellView BoardCellPrefab => _boardCellPrefab;
         public Sprite BlackBoardCellSprite => _blackBoardCellSprite; 
-        public Sprite WhiteBoardCellSprite  => _whiteBoardCellSprite; 
+        public Sprite WhiteBoardCellSprite  => _whiteBoardCellSprite;
+        public IUIView UIView => _uiView;
 
         [Header("Configs")]
         [SerializeField] private PlayerConfig[] _playersConfigs;
@@ -22,6 +25,9 @@ namespace Tatedrez.Application
         [Header("Visuals")]
         [SerializeField] private Sprite _blackBoardCellSprite;
         [SerializeField] private Sprite _whiteBoardCellSprite;
+
+        [Header("UI")]
+        [SerializeField] private UIView _uiView;
 
     }
 }

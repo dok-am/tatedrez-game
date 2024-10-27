@@ -20,11 +20,13 @@ namespace Tatedrez.Services.GameFlow
         public GameFlowService(IPlayerDataService playerDataService)
         {
             _playerDataService = playerDataService;
+        }
 
-            var randomColor = (PlayerColor)UnityEngine.Random.Range(0, (int)PlayerColor.PlayersCount);
-            _currentPlayer = _playerDataService.GetPlayer(randomColor);
-
+        public void StartGameFlow()
+        {
             CurrentState = GameFlowState.Initial;
+            UpdateStateInternal();
+            OnStateSwitched?.Invoke(CurrentState);
         }
 
         public void GoToNextState()
@@ -53,7 +55,19 @@ namespace Tatedrez.Services.GameFlow
 
         private void UpdateStateInternal()
         {
+            switch (CurrentState)
+            {
+                case GameFlowState.PiecePlacement:
+                    var randomColor = (PlayerColor)UnityEngine.Random.Range(0, (int)PlayerColor.PlayersCount);
+                    _currentPlayer = _playerDataService.GetPlayer(randomColor);
+                    OnPlayerBeginTurn?.Invoke(_currentPlayer);
+                    break;
 
+                case GameFlowState.DynamicMode:
+                    break;
+                case GameFlowState.GameFinished:
+                    break;
+            }
         }
     }
 }

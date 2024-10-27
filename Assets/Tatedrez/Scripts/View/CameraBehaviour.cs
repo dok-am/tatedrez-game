@@ -8,6 +8,7 @@ namespace Tatedrez.View
     public class CameraBehaviour : MonoBehaviour
     {
         [SerializeField] private Camera _camera;
+        [SerializeField] private float _minimalOrthographicSize = 2.5f;
 
         [Inject]
         public void InjectDependencies(BoardViewController boardViewController)
@@ -23,7 +24,11 @@ namespace Tatedrez.View
 
         private void RecalculateOrthograthicSize(float boardSize)
         {
-            _camera.orthographicSize = boardSize / 2.0f / _camera.aspect;
+            float newOrthoSize = boardSize / 2.0f / _camera.aspect;
+            if (newOrthoSize < _minimalOrthographicSize)
+                newOrthoSize = _minimalOrthographicSize;
+
+           _camera.orthographicSize = newOrthoSize;
         }
 
         private void Reset()
