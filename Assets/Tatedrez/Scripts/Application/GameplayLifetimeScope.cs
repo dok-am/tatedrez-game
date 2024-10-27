@@ -1,5 +1,7 @@
 using Tatedrez.Services.Configs;
 using Tatedrez.Services.Configs.Interfaces;
+using Tatedrez.Services.GameFlow;
+using Tatedrez.Services.GameFlow.Interfaces;
 using Tatedrez.Services.Players;
 using Tatedrez.Services.Players.Interfaces;
 using UnityEngine;
@@ -19,6 +21,7 @@ namespace Tatedrez.Application
             builder.Register<IConfigsService, ConfigsService>(Lifetime.Singleton);
 
             builder.Register<IPlayerDataService, PlayerDataService>(Lifetime.Scoped);
+            builder.Register<IGameFlowService, GameFlowService>(Lifetime.Scoped);
 
             builder.RegisterEntryPoint<GameplayEntryPoint>();
         }
