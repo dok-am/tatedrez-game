@@ -6,6 +6,7 @@ using Tatedrez.Services.GameFlow;
 using Tatedrez.Services.GameFlow.Interfaces;
 using Tatedrez.Services.Players;
 using Tatedrez.Services.Players.Interfaces;
+using Tatedrez.View.BoardView;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -25,6 +26,7 @@ namespace Tatedrez.Application
             builder.Register<IBoardService, BoardService>(Lifetime.Scoped);
             builder.Register<IPlayerDataService, PlayerDataService>(Lifetime.Scoped);
             builder.Register<IGameFlowService, GameFlowService>(Lifetime.Scoped);
+            builder.Register<BoardViewController>(Lifetime.Scoped);
 
             builder.RegisterEntryPoint<GameplayEntryPoint>();
         }

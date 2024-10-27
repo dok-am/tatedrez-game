@@ -36,9 +36,10 @@ namespace Tatedrez.Data
 
         private void GenerateGrid()
         {
-            _grid = new BoardCell[Size * Size];
+            int arraySize = Size * Size;
+            _grid = new BoardCell[arraySize];
 
-            for (int i = 0; i < Size * Size; i++)
+            for (int i = 0; i < arraySize; i++)
             {
                 int colIndex = i % Size;
                 int rowIndex = i / Size;

@@ -2,7 +2,7 @@
 
 namespace Tatedrez.Configs
 {
-    [CreateAssetMenu(fileName = "PlayerConfig", menuName = "Tatedrez/New game config")]
+    [CreateAssetMenu(fileName = "GameConfig", menuName = "Tatedrez/New game config")]
     public class GameConfig : ScriptableObject
     {
         public int BoardSize => _boardSize;
