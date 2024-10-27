@@ -6,8 +6,10 @@ namespace Tatedrez.Configs
     [CreateAssetMenu(fileName = "PlayerConfig", menuName = "Tatedrez/New player config")]
     public class PlayerConfig : ScriptableObject
     {
+        public PlayerColor Color => _color;
         public PieceConfig[] Pieces => _pieces;
 
+        [SerializeField] private PlayerColor _color;
         [SerializeField] private PieceConfig[] _pieces;
 
         private void Reset()

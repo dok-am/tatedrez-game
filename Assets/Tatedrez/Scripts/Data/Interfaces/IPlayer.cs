@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Tatedrez.Configs;
 
 namespace Tatedrez.Data.Interfaces
 {
@@ -7,7 +6,8 @@ namespace Tatedrez.Data.Interfaces
     {
         public PlayerColor Color { get; }
         public IReadOnlyList<IPiece> FreePieces { get; }
+        public IReadOnlyList<IPiece> PiecesOnBoard { get; }
 
-        public PieceConfig GetConfigForPiece(PieceType type);
+        public void PutPieceOnBoard(Piece piece);
     }
 }
