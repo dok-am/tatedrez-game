@@ -6,7 +6,7 @@ namespace Tatedrez.Behaviours
     [RequireComponent(typeof(Collider2D))]
     public class SelectableBehaviour : MonoBehaviour
     {
-        public UnityAction<bool> OnSelected;
+        public UnityEvent<bool> OnSelected;
 
         public bool IsSelected { get; private set; }
 

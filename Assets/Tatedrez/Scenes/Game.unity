@@ -350,7 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 519420031}
-  _minimalOrthographicSize: 2.5
+  _minimalOrthographicSize: 2.77
 --- !u!1 &556705865
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,7 +889,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 94b70ef32148a654a81d89d9ef3d2f9b, type: 2}
   _gameConfig: {fileID: 11400000, guid: 3be0cc64dc0665e439e928659857d777, type: 2}
   _boardCellPrefab: {fileID: 6395255670227129109, guid: 1ecce5fe56ed4e648a2fd48567a0cc56, type: 3}
-  _piecePrefab: {fileID: 0}
+  _piecePrefab: {fileID: 7076533078026659516, guid: 4ecc61f34819b8e48b90715151afddcc, type: 3}
   _blackBoardCellSprite: {fileID: 21300000, guid: 65ae7c3370157ed499d99bc66e4ed7d8, type: 3}
   _whiteBoardCellSprite: {fileID: 21300000, guid: a0192002bd401804288159dd0c545282, type: 3}
   _uiView: {fileID: 252707678}

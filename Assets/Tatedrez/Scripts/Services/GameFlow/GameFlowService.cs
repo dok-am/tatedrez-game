@@ -2,6 +2,7 @@
 using Tatedrez.Data.Enums;
 using Tatedrez.Data.Interfaces;
 using Tatedrez.Services.GameFlow.Interfaces;
+using Tatedrez.Services.Instances.Interfaces;
 using Tatedrez.Services.Players.Interfaces;
 
 namespace Tatedrez.Services.GameFlow
@@ -16,10 +17,12 @@ namespace Tatedrez.Services.GameFlow
 
         private IPlayerDataService _playerDataService;
         private IPlayer _currentPlayer;
+        private IInstancesManager _instancesManager;
 
-        public GameFlowService(IPlayerDataService playerDataService)
+        public GameFlowService(IPlayerDataService playerDataService, IInstancesManager instancesManager)
         {
             _playerDataService = playerDataService;
+            _instancesManager = instancesManager;
         }
 
         public void StartGameFlow()
@@ -60,6 +63,7 @@ namespace Tatedrez.Services.GameFlow
                 case GameFlowState.PiecePlacement:
                     var randomColor = (PlayerColor)UnityEngine.Random.Range(0, (int)PlayerColor.PlayersCount);
                     _currentPlayer = _playerDataService.GetPlayer(randomColor);
+                    _instancesManager.ShowPlayerAvailablePieces(_currentPlayer);
                     OnPlayerBeginTurn?.Invoke(_currentPlayer);
                     break;
 
