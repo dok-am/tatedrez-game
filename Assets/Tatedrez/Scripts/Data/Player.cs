@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Tatedrez.Data.Enums;
 using Tatedrez.Data.Interfaces;
 
 namespace Tatedrez.Data
@@ -17,6 +18,14 @@ namespace Tatedrez.Data
             Color = color;
 
             ResetState();
+        }
+
+        public bool IsPieceOnBoard(IPiece piece)
+        {
+            if (piece is Piece pieceInstance)
+                return _piecesOnBoard.Contains(pieceInstance);
+
+            return false;
         }
 
         public void PutPieceOnBoard(Piece piece)

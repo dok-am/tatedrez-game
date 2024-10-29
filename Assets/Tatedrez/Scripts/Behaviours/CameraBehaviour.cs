@@ -2,7 +2,7 @@
 using UnityEngine;
 using VContainer;
 
-namespace Tatedrez.View
+namespace Tatedrez.Behaviours
 {
     [RequireComponent(typeof(Camera))]
     public class CameraBehaviour : MonoBehaviour

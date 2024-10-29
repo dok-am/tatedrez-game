@@ -4,6 +4,8 @@ using Tatedrez.Services.Configs;
 using Tatedrez.Services.Configs.Interfaces;
 using Tatedrez.Services.GameFlow;
 using Tatedrez.Services.GameFlow.Interfaces;
+using Tatedrez.Services.Instances;
+using Tatedrez.Services.Instances.Interfaces;
 using Tatedrez.Services.Players;
 using Tatedrez.Services.Players.Interfaces;
 using Tatedrez.UI;
@@ -29,6 +31,7 @@ namespace Tatedrez.Application
             builder.Register<IPlayerDataService, PlayerDataService>(Lifetime.Scoped);
             builder.Register<IGameFlowService, GameFlowService>(Lifetime.Scoped);
             builder.Register<BoardViewController>(Lifetime.Scoped);
+            builder.Register<IInstancesManager, InstancesManager>(Lifetime.Scoped);
 
             builder.Register<UIViewController>(Lifetime.Scoped);
 

@@ -28,7 +28,7 @@ namespace Tatedrez.UI
 
         private void OnPlayerBeginTurn(Data.Interfaces.IPlayer player)
         {
-            Color playerColor = player.Color == Data.PlayerColor.White ? Color.white : Color.black;
+            Color playerColor = player.Color == Data.Enums.PlayerColor.White ? Color.white : Color.black;
             string playerName = player.Color.ToString();
             _view.SetStatusText($"{playerName}'s turn", playerColor);
         }

@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: GameConfig
   m_EditorClassIdentifier: 
   _boardSize: 3
+  _pieceMovementConfigs:
+  - {fileID: 11400000, guid: 3aa372d1eb053c24eb5d90af219f0a2f, type: 2}
+  - {fileID: 11400000, guid: c9cc11b5b536a2b4d88da3bbb34cdb6f, type: 2}
+  - {fileID: 11400000, guid: 1fe78c86168bbc54097bdd1297690a92, type: 2}

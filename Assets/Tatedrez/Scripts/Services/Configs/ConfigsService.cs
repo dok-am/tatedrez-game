@@ -2,7 +2,7 @@
 using System.Linq;
 using Tatedrez.Application;
 using Tatedrez.Configs;
-using Tatedrez.Data;
+using Tatedrez.Data.Enums;
 using Tatedrez.Services.Configs.Interfaces;
 
 namespace Tatedrez.Services.Configs

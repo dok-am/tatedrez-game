@@ -1,5 +1,5 @@
 ﻿
-namespace Tatedrez.Data
+namespace Tatedrez.Data.Enums
 {
     public enum PlayerColor 
     {

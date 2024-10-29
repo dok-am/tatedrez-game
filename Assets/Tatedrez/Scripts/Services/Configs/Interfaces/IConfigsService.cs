@@ -1,5 +1,5 @@
 ﻿using Tatedrez.Configs;
-using Tatedrez.Data;
+using Tatedrez.Data.Enums;
 
 namespace Tatedrez.Services.Configs.Interfaces
 {

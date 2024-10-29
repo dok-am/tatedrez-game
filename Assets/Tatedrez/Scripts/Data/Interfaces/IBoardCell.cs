@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Tatedrez.Data.Enums;
 
 namespace Tatedrez.Data.Interfaces
 {

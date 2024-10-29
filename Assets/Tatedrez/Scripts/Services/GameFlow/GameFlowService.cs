@@ -1,5 +1,5 @@
 ﻿using System;
-using Tatedrez.Data;
+using Tatedrez.Data.Enums;
 using Tatedrez.Data.Interfaces;
 using Tatedrez.Services.GameFlow.Interfaces;
 using Tatedrez.Services.Players.Interfaces;

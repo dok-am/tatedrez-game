@@ -1,4 +1,5 @@
 ﻿using Tatedrez.Data;
+using Tatedrez.Data.Enums;
 using UnityEngine;
 
 namespace Tatedrez.Configs

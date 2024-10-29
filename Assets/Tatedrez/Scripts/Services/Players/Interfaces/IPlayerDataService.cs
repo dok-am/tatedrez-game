@@ -1,4 +1,4 @@
-﻿using Tatedrez.Data;
+﻿using Tatedrez.Data.Enums;
 using Tatedrez.Data.Interfaces;
 
 namespace Tatedrez.Services.Players.Interfaces

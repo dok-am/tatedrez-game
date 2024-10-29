@@ -1,4 +1,5 @@
-﻿using Tatedrez.Data.Interfaces;
+﻿using Tatedrez.Data.Enums;
+using Tatedrez.Data.Interfaces;
 
 namespace Tatedrez.Data
 {
