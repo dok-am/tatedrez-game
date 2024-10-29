@@ -10,6 +10,18 @@ namespace Tatedrez.Data
 
         public IPiece Piece { get; set; }
 
+        public int RowIndex { get; set; }
+
+        public int ColIndex { get; set; }
+
         public readonly Dictionary<BoardCellRelativePosition, IBoardCell> MutableNearbyCells = new();
+
+        public override int GetHashCode()
+        {
+            var hashcode = 23;
+            hashcode = (hashcode * 37) + RowIndex;
+            hashcode = (hashcode * 37) + ColIndex;
+            return hashcode;
+        }
     }
 }

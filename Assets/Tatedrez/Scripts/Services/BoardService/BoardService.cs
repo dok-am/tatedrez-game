@@ -29,5 +29,11 @@ namespace Tatedrez.Services.BoardService
             _board.SetPieceToPosition(piece, index);
             OnPieceChangedPosition?.Invoke(piece);
         }
+
+        public void MovePieceToCell(IPiece piece, IBoardCell cell)
+        {
+            _board.SetPieceToCell(piece, cell);
+            OnPieceChangedPosition?.Invoke(piece);
+        }
     }
 }

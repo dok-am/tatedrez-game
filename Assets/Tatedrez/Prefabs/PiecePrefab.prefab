@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3486624180675742368}
   - component: {fileID: 7076533078026659516}
   - component: {fileID: 4755839811023016950}
-  - component: {fileID: 7008810485239386819}
   m_Layer: 0
   m_Name: PiecePrefab
   m_TagString: Untagged
@@ -99,6 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15f2f1e34a539fa4c8635e234219e540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnSelected:
+    m_PersistentCalls:
+      m_Calls: []
   _transform: {fileID: 4684061749503148229}
   _spriteRenderer: {fileID: 3486624180675742368}
   _defaultScale: 0.8
@@ -150,30 +152,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.04, y: 1.04}
   m_EdgeRadius: 0
---- !u!114 &7008810485239386819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 636877939656393213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 180db86ab6b61644a9af14604fba27f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnSelected:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7076533078026659516}
-        m_TargetAssemblyTypeName: Tatedrez.View.PieceView.PieceView, Assembly-CSharp
-        m_MethodName: SetSelected
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2

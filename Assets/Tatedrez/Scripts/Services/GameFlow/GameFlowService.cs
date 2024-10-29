@@ -4,6 +4,7 @@ using Tatedrez.Data.Interfaces;
 using Tatedrez.Services.GameFlow.Interfaces;
 using Tatedrez.Services.Instances.Interfaces;
 using Tatedrez.Services.Players.Interfaces;
+using Tatedrez.View.BoardView;
 
 namespace Tatedrez.Services.GameFlow
 {
@@ -18,11 +19,22 @@ namespace Tatedrez.Services.GameFlow
         private IPlayerDataService _playerDataService;
         private IPlayer _currentPlayer;
         private IInstancesManager _instancesManager;
+        private BoardViewController _boardViewController;
 
-        public GameFlowService(IPlayerDataService playerDataService, IInstancesManager instancesManager)
+        public GameFlowService(IPlayerDataService playerDataService, 
+            IInstancesManager instancesManager,
+            BoardViewController boardViewController)
         {
             _playerDataService = playerDataService;
             _instancesManager = instancesManager;
+            _boardViewController = boardViewController;
+
+            _instancesManager.OnPieceSelected += OnPieceSelected;
+        }
+
+        private void OnPieceSelected(IPiece piece, bool selected)
+        {
+            _boardViewController.HighlightAvailableCellsForSet(selected);
         }
 
         public void StartGameFlow()

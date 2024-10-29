@@ -11,5 +11,10 @@ namespace Tatedrez.Data
         {
             Type = type;
         }
+
+        public override int GetHashCode()
+        {
+            return (int)Type;
+        }
     }
 }

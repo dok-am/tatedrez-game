@@ -1,4 +1,5 @@
-﻿using Tatedrez.Data.Enums;
+﻿using System.Linq;
+using Tatedrez.Data.Enums;
 using Tatedrez.Data.Interfaces;
 
 namespace Tatedrez.Data
@@ -33,6 +34,11 @@ namespace Tatedrez.Data
         public void SetPieceToPosition(IPiece piece, int index)
         {
             _grid[index].Piece = piece;
+        }
+
+        public void SetPieceToCell(IPiece piece, IBoardCell cell) {
+            if (cell is BoardCell cellData)
+                cellData.Piece = piece;
         }
 
         private void GenerateGrid()

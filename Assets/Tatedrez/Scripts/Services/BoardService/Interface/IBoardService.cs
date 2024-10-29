@@ -10,6 +10,7 @@ namespace Tatedrez.Services.BoardService.Interface
         public IBoard Board { get; }
 
         public void SetPieceToPosition(IPiece piece, int index);
+        public void MovePieceToCell(IPiece piece, IBoardCell cell);
         public void ClearBoard();
     }
 }

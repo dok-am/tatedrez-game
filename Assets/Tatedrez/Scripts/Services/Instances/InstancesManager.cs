@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Tatedrez.Application;
 using Tatedrez.Data.Enums;
 using Tatedrez.Data.Interfaces;
+using Tatedrez.Helpers;
 using Tatedrez.Services.Configs.Interfaces;
 using Tatedrez.Services.Instances.Interfaces;
 using Tatedrez.View.BoardView;
@@ -12,12 +14,19 @@ namespace Tatedrez.Services.Instances
 {
     public class InstancesManager : IInstancesManager
     {
+        public event Action<IPiece, bool> OnPieceSelected;
+
         private GameObject _pieceInstancePrefab;
         private IConfigsService _configsService;
         private BoardViewController _boardViewController;
 
-        private Dictionary<PlayerColor, Dictionary<PieceType, IPieceView>> _allPieces = new((int)PlayerColor.PlayersCount);
+        private BiDictionary<IPlayer, BiDictionary<IPiece, IPieceView>> _allPieces = 
+            new((int)PlayerColor.PlayersCount);
+
         private List<IPieceView> _currentAvailablePieces = new((int)PieceType.TypesCount);
+
+        private IPieceView _selectedPiece;
+        private IPlayer _currentPlayer;
 
         public InstancesManager(GameplaySceneBinder sceneBinder, 
             IConfigsService configsService, 
@@ -32,11 +41,11 @@ namespace Tatedrez.Services.Instances
         {
             ClearCurrentPlayerPieces();
 
-            if (_allPieces.TryGetValue(player.Color, out var playersPiecesViews))
+            if (_allPieces.TryGetValue(player, out var playersPiecesViews))
             {
                 foreach(var pieceData in player.FreePieces)
                 {
-                    _currentAvailablePieces.Add(playersPiecesViews[pieceData.Type]);
+                    _currentAvailablePieces.Add(playersPiecesViews[pieceData]);
                 }                
             } 
             else
@@ -48,11 +57,13 @@ namespace Tatedrez.Services.Instances
             {
                 piece.Enable(true);
             }
+
+            _currentPlayer = player;
         }
 
         private void SpawnPlayerPieces(IPlayer player)
         {
-            Dictionary<PieceType, IPieceView> newPieces = new((int)PieceType.TypesCount);
+            BiDictionary<IPiece, IPieceView> newPieces = new((int)PieceType.TypesCount);
 
             float delta = _boardViewController.BoardTotalSize / player.FreePieces.Count;
             float halfBoardSize = _boardViewController.BoardTotalSize / 2.0f;
@@ -66,13 +77,28 @@ namespace Tatedrez.Services.Instances
                     .GetComponent<IPieceView>();
 
                 pieceView.SetSprite(_configsService.GetConfigForPiece(player.Color, pieceData.Type).Sprite);
-                newPieces.Add(pieceData.Type, pieceView);
+                pieceView.OnPieceSelected += PieceSelectedHandler;
+                newPieces.Add(pieceData, pieceView);
 
                 _currentAvailablePieces.Add(pieceView);
                 position.x += delta;
             }
 
-            _allPieces.Add(player.Color, newPieces);
+            _allPieces.Add(player, newPieces);
+        }
+
+        private void PieceSelectedHandler(IPieceView pieceView, bool selected)
+        {
+            if (_selectedPiece != null)
+            {
+                _selectedPiece.SetSelected(false, true);
+                _selectedPiece = null;
+            }
+
+            if (selected)
+                _selectedPiece = pieceView;
+                        
+            OnPieceSelected?.Invoke(_allPieces[_currentPlayer].GetKeyForValue(pieceView), selected);
         }
 
         private void ClearCurrentPlayerPieces()

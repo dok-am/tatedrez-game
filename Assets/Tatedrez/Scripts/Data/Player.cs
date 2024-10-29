@@ -49,5 +49,10 @@ namespace Tatedrez.Data
                 _freePieces.Add(new Piece(pieceType));
             }
         }
+
+        public override int GetHashCode()
+        {
+            return (int)Color;
+        }
     }
 }

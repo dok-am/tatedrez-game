@@ -8,12 +8,18 @@ namespace Tatedrez.Behaviours
     {
         public UnityEvent<bool> OnSelected;
 
-        public bool IsSelected { get; private set; }
+        public bool IsSelected { get; protected set; }
+
+        public virtual void SetSelected(bool selected)
+        {
+            IsSelected = selected;
+        }
 
         private void OnMouseUpAsButton()
         {
             IsSelected = !IsSelected;
-            OnSelected?.Invoke(IsSelected);
+            SetSelected(IsSelected);
         }
+
     }
 }
