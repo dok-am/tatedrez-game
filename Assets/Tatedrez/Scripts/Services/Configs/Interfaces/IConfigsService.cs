@@ -7,5 +7,6 @@ namespace Tatedrez.Services.Configs.Interfaces
     {
         public PlayerConfig GetPlayerConfig(PlayerColor color);
         public PieceConfig GetConfigForPiece(PlayerColor color, PieceType type);
+        public PieceMovementConfig GetMovementConfigForPiece(PieceType pieceType);
     }
 }

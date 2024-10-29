@@ -10,12 +10,18 @@ namespace Tatedrez.Services.Configs
     public class ConfigsService : IConfigsService
     {
         private Dictionary<PlayerColor, PlayerConfig> _playerConfigs = new();
+        private Dictionary<PieceType, PieceMovementConfig> _pieceMovementConfigs = new();
 
         public ConfigsService(GameplaySceneBinder sceneBinder)
         {
             foreach (var playerConfig in sceneBinder.PlayersConfigs)
             {
                 _playerConfigs.Add(playerConfig.Color, playerConfig);
+            }
+
+            foreach(var movementConfig in sceneBinder.GameConfig.PieceMovementConfigs)
+            {
+                _pieceMovementConfigs.Add(movementConfig.PieceType, movementConfig);
             }
         }
 
@@ -37,6 +43,14 @@ namespace Tatedrez.Services.Configs
                     $"and piece type {type}");
 
             return pieceConfig;
+        }
+
+        public PieceMovementConfig GetMovementConfigForPiece(PieceType pieceType)
+        {
+            if (_pieceMovementConfigs.TryGetValue(pieceType, out var config))
+                return config;
+
+            throw new System.Exception($"Can't find config for piece type {pieceType}");
         }
     }
 }
